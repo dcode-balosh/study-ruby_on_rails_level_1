@@ -118,5 +118,36 @@ describe "A movie" do
 
     expect(movie.valid?).to eq(true)
   end
+
+  it "calculates the average number of review stars" do
+    movie = Movie.create(movie_attributes)
+
+    movie.reviews.create(review_attributes(stars: 1))
+    movie.reviews.create(review_attributes(stars: 3))
+    movie.reviews.create(review_attributes(stars: 5))
+
+    expect(movie.average_stars).to eq(3)
+  end
+
+  it 'get recent reviews' do
+    movie = Movie.create(movie_attributes)
+
+    movie.reviews.create(review_attributes(stars: 1))
+    review2 = movie.reviews.create(review_attributes(stars: 3))
+    review3 = movie.reviews.create(review_attributes(stars: 5))
+
+    expect(movie.recent_reviews).to eq([review3,review2])
+  end
+
+  it 'define cult movie' do
+    movie1 = Movie.create(movie_attributes)
+    movie2 = Movie.create(movie_attributes)
+
+    Movie::CULT_REVIEWS.times{movie1.reviews.create(review_attributes(stars: 4))}
+    Movie::CULT_REVIEWS.times{movie2.reviews.create(review_attributes(stars: 5))}
+
+    expect(movie1.cult?).to eq(true)
+    expect(movie2.cult?).to eq(true)
+  end
 end
     

@@ -2,6 +2,9 @@ class Movie < ApplicationRecord
   has_many :reviews, dependent: :destroy
 
   RATINGS = %w(G PG PG-13 R NC-17)
+  RECENT_REVIEWS = 2
+  CULT_REVIEWS = 50
+  CULT_RATING = 4
 
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
@@ -30,5 +33,17 @@ class Movie < ApplicationRecord
 
   def flop?
     total_gross.blank? || total_gross < 50000000
+  end
+
+  def average_stars
+    reviews.average(:stars)
+  end
+
+  def recent_reviews
+    reviews.order('created_at desc').limit(RECENT_REVIEWS)
+  end
+
+  def cult?
+    average_stars >= CULT_RATING && reviews.size >= CULT_REVIEWS
   end
 end

@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    @review = @movie.reviews.new(movie_params)
+    @review = @movie.reviews.new(review_params)
     if @review.save
       redirect_to movie_reviews_path(@movie), notice: 'Thanks for your review!'
     else
@@ -18,11 +18,31 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = @movie.reviews.find(params.require(:id))
+    @review.destroy
+    redirect_to movie_reviews_url(@movie), alert: 'Review successfully deleted!'
+  end
+
+  def update
+    @review = @movie.reviews.find(params.require(:id))
+    @review.update(review_params)
+    if @review.save
+      redirect_to movie_reviews_path(@movie), notice: 'Review successfully updated!'
+    else
+      render :edit
+    end
+  end
+
+  def edit
+    @review = @movie.reviews.find(params.require(:id))
+  end
+
   private
 
-  def movie_params
+  def review_params
     params.require(:review).
-        permit(:name, :stars, :comment)
+        permit(:id, :name, :stars, :comment)
   end
 
   def set_movie
