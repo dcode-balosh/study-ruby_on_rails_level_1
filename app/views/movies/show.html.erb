@@ -27,6 +27,8 @@
   <p>
     <%= format_total_gross(@movie) %>
   </p>
+
+  <%= render 'reviews/form' %>
   
   <footer>
     <nav>
@@ -35,6 +37,7 @@
                   class: 'button',
                   method: :delete, data: { confirm: 'Are you sure?' } %>
       <%= link_to pluralize(@reviews.size,'Reviews'), movie_reviews_path(@movie), class: 'button' %>
+      <%= link_to 'Write Review', new_movie_review_path(@movie), class: 'button ok review' %>
     </nav>
   </footer>
 </article>
