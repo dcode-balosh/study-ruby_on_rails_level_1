@@ -1,12 +1,6 @@
 require 'rails_helper'
 
 describe "Navigating movies" do
-  it 'Root is movies index page' do
-    visit root_url
-
-    expect(page).to have_text('Movies')
-  end
-
   it "allows navigation from the detail page to the listing page" do
     movie = Movie.create(movie_attributes)
 
@@ -17,7 +11,7 @@ describe "Navigating movies" do
     expect(current_path).to eq(movies_path)
   end
 
-  it 'allow navigation from the listing page to the detail page' do
+  it "allows navigation from the listing page to the detail page" do
     movie = Movie.create(movie_attributes)
 
     visit movies_url

@@ -1,40 +1,39 @@
-<article>
+<article id="movie" class="movie">
   <header>
-    <h2><%= @movie.title %></h2>
+    <%= image_for(@movie) %>
+    <h1><%= @movie.title %></h1>
+    <h2>Released: <%= @movie.released_on %></h2>
   </header>
+
   <p>
     <%= @movie.description %>
   </p>
-  <table>
-    <tr>
-      <th>Released:</th>
-      <td><%= @movie.released_on %></td>
-    </tr>
-    <tr>
-      <th>Rating:</th>
-      <td><%= @movie.rating %></td>
-    </tr>
-    <tr>
-      <th>Total Gross:</th>
-      <td><%= format_total_gross(@movie) %></td>
-    </tr>
-    <tr>
-      <th>Cast:</th>
-      <td><%= @movie.cast %></td>
-    </tr>
-    <tr>
-      <th>Director:</th>
-      <td><%= @movie.director %></td>
-    </tr>
-    <tr>
-      <th>Duration:</th>
-      <td><%= @movie.duration %></td>
-    </tr>
-    <tr>
-      <th>Image_file_name:</th>
-      <td><%= image_for @movie%></td>
-    </tr>
-  </table>
+  
+  <h3 class="no-rule">
+    <%= @movie.rating %> &bull; <%= @movie.duration %> 
+  </h3>
+  
+  <h3>Cast</h3>
+  <p>
+    <%= @movie.cast %>
+  </p>
+  
+  <h3>Director</h3>
+  <p>
+    <%= @movie.director %>
+  </p>
+  
+  <h3>Total Gross</h3>
+  <p>
+    <%= format_total_gross(@movie) %>
+  </p>
+  
+  <footer>
+    <nav>
+      <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
+      <%= link_to 'Delete', @movie, 
+                  class: 'button',
+                  method: :delete, data: { confirm: 'Are you sure?' } %>
+    </nav>
+  </footer>
 </article>
-<%= link_to('Edit', edit_movie_path(@movie)) %>
-<%= link_to('Delete', movie_path, method: :delete , data: { confirm: 'Are you sure?' } ) %>

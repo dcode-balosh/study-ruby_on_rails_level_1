@@ -1,10 +1,9 @@
-class CreateMovies < ActiveRecord::Migration[5.1]
+class CreateMovies < ActiveRecord::Migration[5.0]
   def change
     create_table :movies do |t|
       t.string :title
       t.string :rating
-      t.string :total_gross
-      t.string :decimal
+      t.decimal :total_gross
 
       t.timestamps
     end
