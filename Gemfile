@@ -54,3 +54,4 @@ end
 group :test do
   gem "capybara", "2.7.1"
 end
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
