@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170521052842) do
+ActiveRecord::Schema.define(version: 20170526103110) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
     t.string "rating"
-    t.string "total_gross"
+    t.decimal "total_gross"
     t.string "decimal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
