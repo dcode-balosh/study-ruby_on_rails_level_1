@@ -16,7 +16,7 @@ describe 'Viewing the list of movies' do
 
     movie3 = Movie.create(title: "Spider-Man",
                           rating: "PG-13",
-                          total_gross: 403706375.00,
+                          total_gross: 49999999.99,
                           description: "Peter Parker gets bit by a genetically modified spider",
                           released_on: "2002-05-03")
 
@@ -31,6 +31,8 @@ describe 'Viewing the list of movies' do
     expect(page).to have_text(movie1.description[0..10])
     expect(page).to have_text(movie1.released_on)
     expect(page).to have_text("$318,412,101.00")
+
+    expect(page).to have_text("Flop!")
 
   end
 end
