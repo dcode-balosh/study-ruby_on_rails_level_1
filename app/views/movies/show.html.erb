@@ -36,7 +36,5 @@
     </tr>
   </table>
 </article>
-<%= link_to('All Movies', movies_path) %>
 <%= link_to('Edit', edit_movie_path(@movie)) %>
 <%= link_to('Delete', movie_path, method: :delete , data: { confirm: 'Are you sure?' } ) %>
-<%= render 'footer' %>
