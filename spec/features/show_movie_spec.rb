@@ -11,6 +11,7 @@ describe 'Viewing movie' do
     expect(page).to have_text(movie1.rating)
     expect(page).to have_text(movie1.description)
     expect(page).to have_text(movie1.released_on)
+    expect(page).to have_text('John Sina')
   end
 
   it "shows the total gross if the total gross exceeds $50M" do
