@@ -82,6 +82,7 @@ GEM
     nio4r (2.0.0)
     nokogiri (1.7.1-x86-mingw32)
       mini_portile2 (~> 2.1.0)
+    orderly (0.0.2)
     public_suffix (2.0.5)
     puma (3.8.2)
     rack (2.0.1)
@@ -174,6 +175,7 @@ DEPENDENCIES
   capybara (= 2.7.1)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
+  orderly
   puma (~> 3.7)
   rails (~> 5.1.0.rc2)
   rspec-rails (= 3.5.0.beta3)

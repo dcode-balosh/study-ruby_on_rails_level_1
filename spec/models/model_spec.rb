@@ -11,4 +11,19 @@ describe "A movie" do
 
     expect(movie.flop?).to eq(false)
   end
+
+  it 'returns only movies released in the past' do
+    movie1 = Movie.create(movie_attributes(released_on: 2.days.ago))
+    movie2 = Movie.create(movie_attributes(title: 'Jack the Jack',released_on: 2.days.from_now))
+
+    expect(Movie.released).to include(movie1)
+    expect(Movie.released).not_to include(movie2)
+  end
+
+  it 'released movies ordered with the most recently-released movie first' do
+    movie1 = Movie.create(movie_attributes(released_on: 2.days.ago))
+    movie2 = Movie.create(movie_attributes(title: 'Jack the Jack',released_on: 3.days.ago))
+    expect(Movie.released).to eq([movie1,movie2])
+
+  end
 end

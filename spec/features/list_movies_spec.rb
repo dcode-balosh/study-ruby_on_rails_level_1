@@ -35,4 +35,24 @@ describe 'Viewing the list of movies' do
     expect(page).to have_text("Flop!")
 
   end
+
+  it 'shows only the released movies' do
+    movie1 = Movie.create(movie_attributes(released_on: 2.days.ago))
+    movie2 = Movie.create(movie_attributes(title: 'Jack the Jack', released_on: 2.days.from_now))
+
+    visit movies_url
+
+    expect(page).to have_text('1 Movie')
+    expect(page).to have_text(movie1.title)
+    expect(page).not_to have_text(movie2.title)
+  end
+
+  it 'shows movies ordered by release date' do
+    movie1 = Movie.create(movie_attributes(released_on: 2.days.ago))
+    movie2 = Movie.create(movie_attributes(title: 'Jack the Jack',released_on: 3.days.ago))
+
+    visit movies_url
+
+    expect(movie1.title).to appear_before(movie2.title)
+  end
 end
