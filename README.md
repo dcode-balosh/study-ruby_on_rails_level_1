@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Code for online course - https://pragmaticstudio.com/rails
 
-Things you may want to cover:
+Some of the code is given as part of the course.
+Some of it I wrote.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The purpose of this code is to study the course, don't expect any care for best practice of UX attention. 
